@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Hind Madurai';
+    src: local('Hind Madurai'),
+        url('/fonts/hind_madurai_font.otf') format('otf');
+    font-style: normal;
+    font-size: 24px;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway'),
+        url('/fonts/raleway_font.ttf') format('ttf');
+    font-weight: 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora'),
+        url('/fonts/lora_font.ttf') format('otf');
+    font-style: italic;
+    font-display: swap;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.telegram {
+    background-image: url("/assets/icon_tg.png");
+}
+
+.instagram {
+    background-image: url("/assets/icon_inst.png");
+}
