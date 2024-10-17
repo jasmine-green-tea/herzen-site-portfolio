@@ -3,7 +3,6 @@
     src: local('Hind Madurai'),
         url('/fonts/hind_madurai_font.otf') format('otf');
     font-style: normal;
-    font-size: 24px;
     font-display: swap;
 }
 
@@ -25,6 +24,27 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+.header {
+    font-family: 'Hind Madurai', sans-serif;
+    font-size: 24px;
+    display: block;
+    position: fixed;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.55);
+    z-index: 3;
+}
+
+.nav-list {
+    padding: 0 200px;
+    display: flex;
+    list-style: none;
+}
+
+.nav-link {
+    padding: 0 50px;
+    text-decoration: none;
 }
 
 .telegram {
