@@ -204,11 +204,12 @@
     --color-brown: #7D4F50;
     --color-light: #FFFFFF;
     --color-pink: #EC9192;
+    --color-light-transparent: rgba(255, 255, 255, 0.55);
 
     --border-radius: 12px;
 
     --font-family-base: 'Hind Madurai', sans-serif;
-    --font-family-accent: 'Lora'. sans-serif;
+    --font-family-accent: 'Lora', sans-serif;
     --font-family-heading: 'Raleway', sans-serif;
 
     --input-height: 50px;
@@ -230,6 +231,18 @@ body {
     background-color: var(--color-light);
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 
 a {
     color: var(--color-brown);
@@ -267,13 +280,15 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     column-gap: 20px;
-    background-color: rgba(255, 255, 255, 0.55);
+    background-color: var(--color-light-transparent);
     position: fixed;
     width: 100%;
+    padding-inline: 32px;
 }
 
 .header-menu-list {
     display: flex;
+    flex-wrap: wrap;
     column-gap: 80px;
 }
 
@@ -301,19 +316,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
-/* .nav-list {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-}
-
-.nav-link {
-    padding: 0 80px;
-    text-decoration: none;
-    color: var(--color-brown);
-} */
-
-.first-block {
+.banner {
     height: 1024px;
     background-image: url("assets/bg1.png");
     background-repeat: no-repeat;
@@ -322,9 +325,37 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 400px;
 }
 
-.heading {
+.banner-body {
+    text-transform: uppercase;
+}
+
+.banner-title {
+    font-size: 96px;
+    color: var(--color-light);
+    height: 110px;
+}
+
+.banner-info {
+    font-family: var(--font-family-accent);
+    color: var(--color-light-transparent);
+    font-size: 40px;
+}
+
+/* .first-block {
+    height: 1024px;
+    background-image: url("assets/bg1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+/* .heading {
     font-family: 'Raleway', sans-serif;
     font-size: 62px;
     color: white;
@@ -333,17 +364,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .shelldary {
     font-size: 96px;
-}
+} */
 
 .pink-color {
     color: rgb(236, 145, 146);
 }
 
-.accent {
+/* .accent {
     font-family: 'Lora', sans-serif;
     font-style: italic;
     font-size: 48px;
-}
+} */
 
 .telegram {
     background-image: url("/assets/icon_tg.png");
@@ -352,3 +383,4 @@ h1, h2, h3, h4, h5, h6 {
 .instagram {
     background-image: url("/assets/icon_inst.png");
 }
+
