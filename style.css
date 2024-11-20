@@ -445,7 +445,7 @@ img {
 
 .services {
   min-height: 80vh;
-
+  text-align: center;
   background-image: url("assets/images/bg2.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -460,6 +460,7 @@ img {
   text-decoration: none;
   display: flex;
   column-gap: clamp(30px, 15.63vw, 300px);
+  text-align: left;
   margin-bottom: 85px;
 }
 
@@ -470,6 +471,7 @@ img {
 .services-mini-title {
   font-size: 40px;
   max-width: 406px;
+  line-height: 1.2;
 }
 
 .title-illustration {
