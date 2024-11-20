@@ -2,58 +2,92 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
+        <title>Shelldary</title>
         <link rel="stylesheet" type="text/CSS" href="style.css">
     </head>
     <body>
         <header class="header">
-            <nav>
-                <ul class="nav-list">
-                    <li><a href="#gallery" class="nav-link">галерея</a></li>
-                    <li><a href="#aboutme" class="nav-link">обо мне</a></li>
-                    <li><a href="#mainblock" class="nav-link pink-color">shelldary</a></li>
-                    <li><a href="#services" class="nav-link">услуги</a></li>
-                    <li><a href="#contacts" class="nav-link">контакты</a></li>
+            <nav class="header-menu">
+                <ul class="header-menu-list">
+                    <li class="header-menu-item"><a href="#gallery" class="header-menu-link">галерея</a></li>
+                    <li class="header-menu-item"><a href="#aboutme" class="header-menu-link">обо мне</a></li>
+                    <li class="header-menu-item"><a href="#mainblock" class="header-menu-link pink-color">shelldary</a></li>
+                    <li class="header-menu-item"><a href="#services" class="header-menu-link">услуги</a></li>
+                    <li class="header-menu-item"><a href="#contacts" class="header-menu-link">контакты</a></li>
                 </ul>
             </nav>
         </header>
 
-        <main>
-            <section class="first-block">
-                <!-- <img class="first-block-image" src="assets/bg1.png" alt="Фоновое изображение"> -->
-                <h1 class="heading shelldary">SHELLDARY</h1>
-                <p class="accent">рисование к любви</p>
+        <main class="content">
+            <h1 class="visually-hidden">Художница Shelldary</h1>
+            <section class="banner">
+                <h2 class="visually-hidden">Кредо</h2>
+                <div class="banner-body">
+                    <h3 class="banner-title">Shelldary</h3>
+                </div>
+                <div class="banner-info">
+                    рисование к любви
+                </div>
             </section>
 
-            <section id="gallery">
+            <!-- <section class="gallery" id="gallery">
                 <h1 class="pink-color">Мои работы</h1>
-            </section>
+            </section> -->
             
-            <section id="aboutme">
-                <h2 class="pink-color">Привет, я Даша</h2>
-                <p>
-                Я художница, иллюстратор и дизайнер. 
-                В своих работах стараюсь изобразить глубину чувств и яркость нашего мира. 
-                </p>
-                <p>Моя миссия - воодушевить, добавить красочности в реальность и отразить идеи на холстах.</p>
-            </section>
+            <section class="aboutme container" id="aboutme">
+                <h2 class="visually-hidden">Обо мне</h2>
+                <div class="aboutme-photo photo-backdrop-rect">
+                    <div class="photo-backdrop-item">
+                        <img src="./assets/images/author.jpg" 
+                        alt="Художница Даша"
+                        width="488" height="570" loading="lazy">
+                    </div>
+                </div>
+                <div class="aboutme-body">
+                    <div class="aboutme-title">
+                        <h3 class="title-medium aboutme-title-backdrop-item">Привет, я Даша</h3>
+                    </div>
+                    <div class="aboutme-description">
+                        <p>
+                        Я художница, иллюстратор и дизайнер. 
+                        В своих работах стараюсь изобразить глубину чувств и яркость нашего мира. 
+                        </p>
+                        <p>Моя миссия - воодушевить, добавить красочности в реальность и отразить идеи на холстах.</p>
+                    </div>
+                    <button type="button" onclick="location.href='#contacts'">Обсудить проект</button>
+                </div>
+                </section>
 
-            <section id="services">
-                <h1>Услуги</h1>
-
-                <h3>Иллюстрации / картины</h3>
-                <ul>
-                    <li>Дизайн персонажей</li>
-                    <li>Концепт-арт</li>
-                    <li>Пейзаж/Графика/Этюд</li>
-                </ul>
-        
-                <h3>Веб-дизайн</h3>
-                <ul>
-                    <li>Вайрфрейминг</li>
-                    <li>UX/UI дизайн</li>
-                    <li>Прототипирование</li>
-                    <li>Разработка</li>
-                </ul>
+            <section class="services" id="services">
+                <h2 class="visually-hidden">Перечень предоставляемых услуг</h2>
+                <div class="services-body">
+                    <h3 class="title-base">Услуги</h3>
+                    <ul class="services-list">
+                        <li class="services-illustration">
+                            <div class="services-illustration-title">
+                                <h4 class="services-mini-title title-illustration">Иллюстрации / картины</h4>
+                            </div>
+                                <ul class="services-illustration-list">
+                                    <li class="services-illustration-item">Дизайн персонажей</li>
+                                    <li class="services-illustration-item">Концепт-арт</li>
+                                    <li class="services-illustration-item">Пейзаж/Графика/Этюд</li>
+                                </ul>
+                        </li>
+                        <li class="services-webdesign">
+                            <div class="services-webdesign-title">
+                                <h4 class="services-mini-title title-webdesign">Веб-дизайн</h4>
+                            </div>
+                                <ul class="services-webdesign-list">
+                                    <li class="services-webdesign-item">Вайрфрейминг</li>
+                                    <li class="services-webdesign-item">UX/UI дизайн</li>
+                                    <li class="services-webdesign-item">Прототипирование</li>
+                                    <li class="services-webdesign-item">Разработка</li>
+                                </ul>
+                        </li>
+                    </ul>
+                    <button type="button" onclick="location.href='#contacts'">Связаться</button>
+                </div>
+                
             </section>
             
             <section>
@@ -96,7 +130,7 @@
             </section>
             
             <section id="contacts">
-                <h1 class="pink-color">Создавать вместе</h1>
+                <h1 class="title-medium">Создавать вместе</h1>
                 <div>E-mail:<a href="malito:shelldary@yandex.ru">shelldary@yandex.ru</a></div>
             </section>
         </main>
