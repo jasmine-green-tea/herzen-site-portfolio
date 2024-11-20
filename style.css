@@ -1,87 +1,485 @@
 @font-face {
     font-family: 'Hind Madurai';
-    src: local('Hind Madurai'),
-        url('./fonts/hind_madurai_font.woff') format('woff');
+    src: url('./fonts/hind_madurai_font.woff') format('woff');
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway'),
-        url('./fonts/Raleway.woff') format('woff');
+    src: url('./fonts/Raleway.woff') format('woff');
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Lora';
-    src: local('Lora'),
-        url('./fonts/lora_font.woff') format('woff');
+    src: url('./fonts/lora_font.woff') format('woff');
     font-display: swap;
 }
 
-html {
-    scroll-behavior: smooth;
+/**
+  Нормализация блочной модели
+ */
+ *,
+ ::before,
+ ::after {
+   box-sizing: border-box;
+ }
+ 
+ /**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+ :where(ul, ol):where([class]) {
+   padding-left: 0;
+ }
+ 
+ /**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+ body,
+ :where(blockquote, figure):where([class]) {
+   margin: 0;
+ }
+ 
+ /**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+ :where(
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6,
+   p,
+   ul,
+   ol,
+   dl
+ ):where([class]) {
+   margin-block: 0;
+ }
+ 
+ :where(dd[class]) {
+   margin-left: 0;
+ }
+ 
+ :where(fieldset[class]) {
+   margin-left: 0;
+   padding: 0;
+   border: none;
+ }
+ 
+ /**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+ :where(ul[class]) {
+   list-style: none;
+ }
+ 
+ :where(address[class]) {
+   font-style: normal;
+ }
+ 
+ /**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+ p {
+   --paragraphMarginBottom: 24px;
+ 
+   margin-block: 0;
+ }
+ 
+ /**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+ p:where(:not([class]):not(:last-child)) {
+   margin-bottom: var(--paragraphMarginBottom);
+ }
+ 
+ 
+ /**
+   Упрощаем работу с изображениями и видео
+  */
+ img,
+ video {
+   display: block;
+   max-width: 100%;
+   height: auto;
+ }
+ 
+ /**
+   Наследуем свойства шрифт для полей ввода
+  */
+ input,
+ textarea,
+ select,
+ button {
+   font: inherit;
+ }
+ 
+ html {
+   /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+   height: 100%;
+   /**
+     Убираем скачок интерфейса по горизонтали
+     при появлении / исчезновении скроллбара
+    */
+   scrollbar-gutter: stable;
+ }
+ 
+ /**
+   Плавный скролл
+  */
+ html,
+ :has(:target) {
+   scroll-behavior: smooth;
+ }
+ 
+ body {
+   /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+   min-height: 100%;
+   /**
+     Унифицированный интерлиньяж
+    */
+   line-height: 1.5;
+ }
+ 
+ /**
+   Нормализация высоты элемента ссылки при его инспектировании в DevTools
+  */
+ a:where([class]) {
+   display: inline-flex;
+ }
+ 
+ /**
+   Курсор-рука при наведении на элемент
+  */
+ button,
+ label {
+   cursor: pointer;
+ }
+ 
+ /**
+   Приводим к единому цвету svg-элементы
+  */
+ [fill] { fill: currentColor }
+ [stroke] { stroke: currentColor }
+ 
+ /**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+ svg * {
+   transition-property: fill, stroke;
+ }
+ 
+ /**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+ @media (prefers-reduced-motion: reduce) {
+   *,
+   ::before,
+   ::after {
+     animation-duration: 0.01ms !important;
+     animation-iteration-count: 1 !important;
+     transition-duration: 0.01ms !important;
+     scroll-behavior: auto !important;
+   }
+ }
+
+:root {
+    --color-brown: #7D4F50;
+    --color-light: #FFFFFF;
+    --color-pink: #EC9192;
+    --color-light-transparent: rgba(255, 255, 255, 0.55);
+
+    --border-radius: 12px;
+
+    --font-family-base: 'Hind Madurai', sans-serif;
+    --font-family-accent: 'Lora', sans-serif;
+    --font-family-heading: 'Raleway', sans-serif;
+
+    --input-height: 50px;
+    --container-width: 1300px;
+    --container-padding-x: 15px;
+
+    --transition-duration: 0.2s;
+
+    --header-height: 70px;
 }
 
 body {
-    margin: 0;
+    font-family: var(--font-family-base);
+    color: var(--color-brown);
+    font-size: 24px;
+    background-color: var(--color-light);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+
+a {
+    color: var(--color-brown);
+}
+
+p {
+  margin-block: 0;
+}
+
+p:not([class]):not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.container {
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    text-transform: uppercase;
+}
+
+.title-base {
+  font-family: var(--font-family-heading);
+  font-size: 62px;
+}
+
+.title-medium {
+  font-family: var(--font-family-accent);
+  text-transform: none;
+  font-weight: normal;
+  font-size: 48px;
+  color: var(--color-pink);
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    height: var(--input-height);
+    padding-inline: 42px;
+    font-size: 24px;
+    color:var(--color-light);
+    background-color: rgba(236, 145, 146, 0.6);
+    border: none;
+    border-radius: var(--border-radius);
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: var(--color-pink);
 }
 
 .header {
-    font-family: 'Hind Madurai', sans-serif;
-    font-size: 24px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    background-color: var(--color-light-transparent);
     position: fixed;
-    height: 70px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.55);
+    min-height: var(--header-height);
     z-index: 3;
 }
 
-.nav-list {
+.header, .banner, .aboutme {
+  padding-inline: 15px;
+}
+
+.header-menu-list {
     display: flex;
-    justify-content: center;
-    list-style: none;
+    flex-wrap: wrap;
+    column-gap: 80px;
 }
 
-.nav-link {
-    padding: 0 80px;
+.header-menu-link {
+    display: inline-flex;
+    align-items: center;
+    height: var(--header-height);
     text-decoration: none;
-    color: rgb(125, 79, 80);
+    position: relative;
+    white-space: nowrap;
 }
 
-.first-block {
-    height: 1024px;
-    background-image: url("assets/bg1.png");
+.header-menu-link::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 0;
+    background: var(--color-pink);
+    transition: var(--transition-duration);
+}
+
+.header-menu-link:hover:after {
+    width: 100%;
+}
+
+.banner {
+    min-height: 100vh;
+    background-image: url("assets/images/bg1.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 100px;
 }
 
-.heading {
-    font-family: 'Raleway', sans-serif;
-    font-size: 62px;
-    color: white;
-    padding-top: 20%;
+.banner-body {
+    text-transform: uppercase;
+    padding-top: 40vh;
 }
 
-.shelldary {
+.banner-title {
     font-size: 96px;
+    color: var(--color-light);
+    height: 110px;
 }
 
-.pink-color {
-    color: rgb(236, 145, 146);
+.banner-info {
+    font-family: var(--font-family-accent);
+    color: var(--color-light-transparent);
+    font-size: 40px;
 }
 
-.accent {
-    font-family: 'Lora', sans-serif;
-    font-style: italic;
-    font-size: 48px;
+.aboutme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: clamp(30px, 6.25vw, 120px);
+  margin-bottom: 100px;
 }
+
+img {
+  border-radius: var(--border-radius);
+}
+
+.photo-backdrop-rect, .photo-backdrop-item, .aboutme-title-backdrop-item {
+  position: relative;
+  z-index: 1;
+}
+
+.photo-backdrop-rect::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 488px;
+  height: 570px;
+  top: -0.6em;
+  left: -0.7em;
+  aspect-ratio: 1;
+  z-index: -1;
+  background: url('./assets/items/rectangle.svg') center/contain no-repeat;
+}
+
+.photo-backdrop-item::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 214px;
+  top: 16.4em;
+  left: 15.4em;
+  aspect-ratio: 1;
+  background: url('./assets/items/aboutme_item_3.png') center/contain no-repeat;
+}
+.photo-backdrop-item::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 151px;
+  top: -0.4em;
+  left: -4.8em;
+  aspect-ratio: 1;
+  background: url('./assets/items/aboutme_item_2.png') center/contain no-repeat;
+}
+
+.aboutme-title-backdrop-item::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 453px;
+  top: -4em;
+  left: 0.1em;
+  aspect-ratio: 1;
+  background: url('./assets/items/aboutme_item_1.png') center/contain no-repeat;
+}
+
+.aboutme-title:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.aboutme-description:not(:last-child) {
+  margin-bottom: 130px;
+}
+
+.aboutme-description {
+  max-width: 430px;
+}
+
+.services {
+  min-height: 80vh;
+
+  background-image: url("assets/images/bg2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: var(--color-light);
+}
+
+.services-list {
+  text-decoration: none;
+  display: flex;
+  column-gap: clamp(30px, 15.63vw, 300px);
+  margin-bottom: 85px;
+}
+
+.services-title {
+  margin-bottom: 35px;
+}
+
+.services-mini-title {
+  font-size: 40px;
+  max-width: 406px;
+}
+
+.title-illustration {
+  margin-bottom: 40px;
+}
+
+.title-webdesign {
+  margin-bottom: 62px;
+}
+
+
 
 .telegram {
     background-image: url("/assets/icon_tg.png");
@@ -89,4 +487,10 @@ body {
 
 .instagram {
     background-image: url("/assets/icon_inst.png");
+}
+
+@media (max-width: 767px) {
+  .aboutme {
+    flex-direction: column-reverse;
+  }
 }
