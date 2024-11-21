@@ -7,8 +7,7 @@
 
 @font-face {
     font-family: 'Raleway';
-    src: local('Raleway'),
-        url('./fonts/raleway_font.woff') format('woff');
+    src: url('./fonts/raleway_font.woff') format('woff');
     font-display: swap;
 }
 
@@ -206,6 +205,7 @@
     --color-light: #FFFFFF;
     --color-pink: #EC9192;
     --color-light-transparent: rgba(255, 255, 255, 0.55);
+    --color-pink-transparent: rgba(236, 145, 146, 0.6);
 
     --border-radius: 12px;
 
@@ -285,7 +285,7 @@ button {
     padding-inline: 42px;
     font-size: 24px;
     color:var(--color-light);
-    background-color: rgba(236, 145, 146, 0.6);
+    background-color: var(--color-pink-transparent);
     border: none;
     border-radius: var(--border-radius);
     white-space: nowrap;
@@ -349,7 +349,6 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
 }
 
 .banner-body {
@@ -370,18 +369,22 @@ button:hover {
 }
 
 .aboutme {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: clamp(30px, 6.25vw, 120px);
-  margin-bottom: 100px;
 }
 
 img {
   border-radius: var(--border-radius);
 }
 
-.photo-backdrop-rect, .photo-backdrop-item, .aboutme-title-backdrop-item {
+.photo-backdrop-rect, .photo-backdrop-item, .aboutme-title-backdrop-item,
+.artwork-title-color-backdrop, .artwork-description-color-backdrop,
+.artwork-title-cards-backdrop, .artwork-description-cards-backdrop,
+.artwork-title-seasons-backdrop, .artwork-description-seasons-backdrop,
+.artwork-title-pet-backdrop, .artwork-description-pet-backdrop {
   position: relative;
   z-index: 1;
 }
@@ -482,7 +485,205 @@ img {
   margin-bottom: 62px;
 }
 
+.artwork-item:nth-child(odd) .artwork-card {
+  flex-direction: row-reverse;
+}
 
+.artwork-item {
+  margin: 120px 0;
+}
+
+.artwork-card {
+  display: flex;
+  justify-content: center;
+  column-gap: clamp(50px, 6.25vw, 120px);
+}
+
+.artwork-card-body {
+  flex-direction: column;
+  position: relative;
+}
+
+.artwork-card-title {
+  font-size: 48px;
+  color: var(--color-pink);
+  margin-bottom: 30px;
+  line-height: 1.1;
+}
+
+.artwork-card-description {
+  max-width: 400px;
+}
+
+.artwork-card-materials {
+  font-family: var(--font-family-accent);
+  font-size: 32px;
+  color: var(--color-pink);
+  position: absolute;
+  bottom: 0;
+}
+
+.artwork-title-color-backdrop::after {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 443px;
+  height: 184px;
+  top: -1.4em;
+  left: -1.6em;
+  background: url('./assets/images/artwork/backdrop/1.png') center/contain no-repeat;
+}
+
+.artwork-description-color-backdrop::after {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 32px;
+  height: 144px;
+  top: -0.2em;
+  left: -1.4em;
+  background: url('./assets/images/artwork/backdrop/2.png') center/contain no-repeat;
+}
+
+.artwork-description-color-backdrop::before {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 220px;
+  height: 192px;
+  top: 1em;
+  left: 11em;
+  background: url('./assets/images/artwork/backdrop/3.png') center/contain no-repeat;
+}
+
+.artwork-title-cards-backdrop::after {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 269px;
+  height: 106px;
+  top: 0.7em;
+  left: -1.3em;
+  background: url('./assets/images/artwork/backdrop/4.png') center/contain no-repeat;
+}
+
+.artwork-title-cards-backdrop::before {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 88px;
+  height: 112px;
+  top: -1em;
+  left: 6.2em;
+  background: url('./assets/images/artwork/backdrop/5.png') center/contain no-repeat;
+}
+
+.artwork-description-cards-backdrop::after {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 28px;
+  height: 312px;
+  top: -0.2em;
+  left: -1.2em;
+  background: url('./assets/images/artwork/backdrop/6.png') center/contain no-repeat;
+}
+
+.artwork-title-seasons-backdrop::after {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 386px;
+  height: 140px;
+  top: -1.1em;
+  left: 1em;
+  background: url('./assets/images/artwork/backdrop/7.png') center/contain no-repeat;
+}
+
+.artwork-description-seasons-backdrop::after {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 24px;
+  height: 255px;
+  top: -1em;
+  left: -1em;
+  background: url('./assets/images/artwork/backdrop/8.png') center/contain no-repeat;
+}
+
+.artwork-title-pet-backdrop::after {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 272px;
+  height: 118px;
+  top: -0.8em;
+  left: 1.3em;
+  background: url('./assets/images/artwork/backdrop/9.png') center/contain no-repeat;
+}
+
+.artwork-description-pet-backdrop::after {
+  content: '';
+  display: block;
+  position: absolute;
+  aspect-ratio: 1;
+  width: 23px;
+  height: 213px;
+  top: -1em;
+  left: -1em;
+  background: url('./assets/images/artwork/backdrop/10.png') center/contain no-repeat;
+}
+
+.slide {
+  width: 488px;
+  height: 528px;
+}
+
+.color-slide1 {
+  background: url('./assets/images/artwork/color/1.jpg');
+}
+
+.color-slide2 {
+  background: url('./assets/images/artwork/color/2.jpg');
+}
+
+.color-slide3 {
+  background: url('./assets/images/artwork/color/3.jpg');
+}
+
+.color-slide4 {
+  background: url('./assets/images/artwork/color/4.jpg');
+}
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+}
+
+#arrow-left {
+  width: 36px;
+  height: 36px;
+  border-top: 5px solid var(--color-pink-transparent);
+  border-right: 5px solid var(--color-pink-transparent);
+  transform: rotate(45deg);
+}
+
+#arrow-right {
+  width: 36px;
+  height: 36px;
+  border-bottom: 5px solid var(--color-pink-transparent);
+  border-left: 5px solid var(--color-pink-transparent);
+  transform: rotate(45deg);
+}
 
 .telegram {
     background-image: url("/assets/icon_tg.png");
