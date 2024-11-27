@@ -496,8 +496,7 @@ img {
 .artwork-card {
   display: flex;
   justify-content: center;
-  /* column-gap: clamp(50px, 4.38vw, 84px); */
-  column-gap: 4px;
+  column-gap: clamp(50px, 4.38vw, 84px);
 }
 
 .artwork-card-body {
@@ -647,6 +646,8 @@ img {
 .swiper {
   width: 565px;
   height: 528px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .swiper-slide {
