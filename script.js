@@ -53,14 +53,46 @@
 //     startSlide(sliderImagesColor);
 //     startSlide(sliderImagesCards);
 
-$(document).ready(function()
+var swiper1 = new Swiper('.swiper1',
 {
-    $(".slider-one").owlCarousel(
-        {
-            items: 1,
-            loop: true,
-            margin: 10
-        }
-    );
+    spaceBetween: 30,
+    navigation:
+    {
+        nextEl: ".swiper-button-next1",
+        prevEl: ".swiper-button-prev1", 
+    },
+    loop: true
 });
 
+var swiper2 = new Swiper('.swiper2',
+    {
+        spaceBetween: 30,
+        navigation:
+        {
+            nextEl: ".swiper-button-next2",
+            prevEl: ".swiper-button-prev2", 
+        },
+        loop: true
+    });
+
+var swiper3 = new Swiper('.swiper3',
+    {
+        spaceBetween: 30,
+        navigation:
+        {
+            nextEl: ".swiper-button-next3",
+            prevEl: ".swiper-button-prev3", 
+        },
+        loop: true
+    });
+
+var swiper4 = new Swiper('.swiper4',
+    {
+        spaceBetween: 30,
+        navigation:
+        {
+            nextEl: ".swiper-button-next4",
+            prevEl: ".swiper-button-prev4", 
+        },
+        loop: true
+    });
